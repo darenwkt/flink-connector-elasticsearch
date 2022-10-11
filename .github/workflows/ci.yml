@@ -53,6 +53,9 @@ jobs:
         working-directory: ./..
         run: wget -q -c ${{ env.FLINK_URL }} -O - | tar -xz
 
+      - name: Show cur dir
+        run: ls
+
       - name: Compile and test flink-connector-elasticsearch
         timeout-minutes: 30
         run: |          
@@ -66,6 +69,9 @@ jobs:
             ${{ env.MVN_CONNECTION_OPTIONS }} \
             -Dlog4j.configurationFile=file://$(pwd)/tools/ci/log4j.properties \
             | tee ${{ env.MVN_BUILD_OUTPUT_FILE }}
+
+      - name: Show cur dir
+        run: ls
 
       - name: Check licensing
         run: |
