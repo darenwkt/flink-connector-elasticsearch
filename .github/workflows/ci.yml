@@ -49,9 +49,9 @@ jobs:
         with:
           maven-version: 3.8.6
 
-      - name: Download Flink binary
-        working-directory: ./..
-        run: wget -q -c ${{ env.FLINK_URL }} -O - | tar -xz
+#      - name: Download Flink binary
+#        working-directory: ./..
+#        run: wget -q -c ${{ env.FLINK_URL }} -O - | tar -xz
 
       - name: Show cur dir
         run: ls && pwd && echo $PATH && echo $CLASSPATH
