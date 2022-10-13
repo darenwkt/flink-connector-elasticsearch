@@ -54,7 +54,7 @@ jobs:
         run: wget -q -c ${{ env.FLINK_URL }} -O - | tar -xz
 
       - name: Show cur dir
-        run: ls && pwd
+        run: ls && pwd && echo $PATH && echo $CLASSPATH
 
       - name: Compile and test flink-connector-elasticsearch
         timeout-minutes: 30
