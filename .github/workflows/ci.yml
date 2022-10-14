@@ -56,19 +56,19 @@ jobs:
       - name: Show cur dir
         run: ls && pwd && echo $PATH && echo $CLASSPATH
 
-      - name: Compile and test flink-connector-elasticsearch
-        timeout-minutes: 30
-        run: |          
-          set -o pipefail
-
-          mvn clean deploy ${MVN_COMMON_OPTIONS} \
-            -DaltDeploymentRepository=validation_repository::default::file:${{ env.MVN_VALIDATION_DIR }} \
-            -Dscala-2.12 \
-            -Prun-end-to-end-tests -DdistDir=$(pwd)/../flink-1.16-SNAPSHOT \
-            -Dflink.convergence.phase=install -Pcheck-convergence \
-            ${{ env.MVN_CONNECTION_OPTIONS }} \
-            -Dlog4j.configurationFile=file://$(pwd)/tools/ci/log4j.properties \
-            | tee ${{ env.MVN_BUILD_OUTPUT_FILE }}
+#      - name: Compile and test flink-connector-elasticsearch
+#        timeout-minutes: 30
+#        run: |
+#          set -o pipefail
+#
+#          mvn clean deploy ${MVN_COMMON_OPTIONS} \
+#            -DaltDeploymentRepository=validation_repository::default::file:${{ env.MVN_VALIDATION_DIR }} \
+#            -Dscala-2.12 \
+#            -Prun-end-to-end-tests -DdistDir=$(pwd)/../flink-1.16-SNAPSHOT \
+#            -Dflink.convergence.phase=install -Pcheck-convergence \
+#            ${{ env.MVN_CONNECTION_OPTIONS }} \
+#            -Dlog4j.configurationFile=file://$(pwd)/tools/ci/log4j.properties \
+#            | tee ${{ env.MVN_BUILD_OUTPUT_FILE }}
 
       - name: Show cur dir
         run: ls && pwd
